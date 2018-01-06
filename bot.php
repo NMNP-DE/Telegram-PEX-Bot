@@ -32,33 +32,36 @@ if($chatID !== null){
 		if($cmd{0} == "/") {
 			switch($cmd) {
 				case "/start":
-					sendMessage($chatID, "Mit */help* erhältst du eine Kommando-Übersicht!");
+					sendMessage($chatID, "You can get with */help* a list of all Commands!");
 					break;
 				case "/help":
-					sendMessage($chatID, "*/info*" . PHP_EOL . "*/onair*" . PHP_EOL . "*/zuhorer*" . PHP_EOL . "*/rekordhalter*" . PHP_EOL . "*/rekord*");
+					sendMessage($chatID, "*/info*" . PHP_EOL . "*/onair*" . PHP_EOL . "*/listeners*" . PHP_EOL . "*/recordholder*" . PHP_EOL . "*/record*");
 					break;
 				case "/info":
-					sendMessage($chatID, "OnAir: *" . $streamstatus['onair_name'] . "*" . PHP_EOL . "Zuhörer: *" . $streamstatus['listeners'] . "*" . PHP_EOL . "Rekordhalter: *" . $streamstatus['peak_name'] . "*" . PHP_EOL . "Zuhörer Rekord: *" . $streamstatus['peak_count'] . "*");
+					sendMessage($chatID, "OnAir: *" . $streamstatus['onair_name'] . "*" . PHP_EOL . "Zuhörer: *" . $streamstatus['listeners'] . "*" . PHP_EOL "Song: *" . $streamstatus['song'] . "*" . PHP_EOL . "Rekordhalter: *" . $streamstatus['peak_name'] . "*" . PHP_EOL . "Zuhörer Rekord: *" . $streamstatus['peak_count'] . "*");
 					break;
 				case "/onair":
-					sendMessage($chatID, "*" . $streamstatus['onair_name'] . "* sendet grade!");
+					sendMessage($chatID, "*" . $streamstatus['onair_name'] . "* is currently OnAir!");
 					break;
-				case "/zuhorer":
-					sendMessage($chatID, "Es hören momentan *" . $streamstatus['listeners'] . "* Leute zu!");
+				case "/song":
+					sendMessage($chatID, "The current Song is: " . PHP_EOL . "*" . $streamstatus['song'] . "*");
 					break;
-				case "/rekordhalter":
-					sendMessage($chatID, "*" . $streamstatus['peak_name'] . "* ist der momentane Rekordhalter!");
+				case "/listeners":
+					sendMessage($chatID, "Currently *" . $streamstatus['listeners'] . "* listeners!");
 					break;
-				case "/rekord":
-					sendMessage($chatID, "*" . $streamstatus['peak_count'] . "* ist der momentane Zuhörer Rekord!");
+				case "/recordholder":
+					sendMessage($chatID, "*" . $streamstatus['peak_name'] . "* is the current record holder!");
+					break;
+				case "/record":
+					sendMessage($chatID, "*" . $streamstatus['peak_count'] . "* is the current listener record!");
 					break;
 				default:
-					sendMessage($chatID, "Kommando nicht gefunden!");
+					sendMessage($chatID, "Command not found!");
 					break;
 			}
 		}
 	} else {
-		sendMessage($chatID, "Unser Telegram Bot befindet sich momentan in *Wartungsarbeiten!*" . PHP_EOL . "Versuche es später nochmal! ;)");
+		sendMessage($chatID, "Our Telegram Bot is currently in Maintenance!*" . PHP_EOL . "Try again later! ;)");
 	}
 }
 
